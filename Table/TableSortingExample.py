@@ -22,14 +22,14 @@ class TableSortingExample(QMainWindow):
 
         # Set table properties
         self.table.setColumnCount(3)
-        self.table.setHorizontalHeaderLabels(['Name', 'Age', 'Country'])
+        self.table.setHorizontalHeaderLabels(['Name Variant', 'Score 1 - 100 ', 'Something'])
 
         # Populate the table with sample data
         data = [
-            ('John', 30, 'USA'),
-            ('Alice', 25, 'Canada'),
-            ('Bob', 35, 'UK'),
-            ('Diana', 27, 'Australia')
+            ('Variant1', 30, 't1'),
+            ('Variant2', 25, 't2'),
+            ('Variant3', 35, 't3'),
+            ('Variant4', 27, 't4')
         ]
         for row_index, (name, age, country) in enumerate(data):
             self.table.insertRow(row_index)
@@ -38,7 +38,7 @@ class TableSortingExample(QMainWindow):
             self.table.setItem(row_index, 2, QTableWidgetItem(country))
 
         # Create a button for sorting
-        self.sort_button = QPushButton('Sort by Age')
+        self.sort_button = QPushButton('Sort by Score')
         self.layout.addWidget(self.sort_button)
 
         # Connect the button click event to the sorting method
