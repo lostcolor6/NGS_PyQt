@@ -69,6 +69,7 @@ class MainWindow(QMainWindow):
         menubar = self.menuBar()  # Get the menu bar
         fileMenu = menubar.addMenu('File')  # Create a File menu
 
+
         # Add Open action to the File menu
         openAction = fileMenu.addAction('Open')
         openAction.triggered.connect(self.openFile)
@@ -80,6 +81,16 @@ class MainWindow(QMainWindow):
         # Add Exit action to the File menu
         exitAction = fileMenu.addAction('Exit')
         exitAction.triggered.connect(self.close)
+
+        fileMenu = menubar.addMenu('Variant')  # Create a File menu
+        variantAction = fileMenu.addAction('Show Var')
+        variantAction.triggered.connect(self.showVariant)
+
+        fileMenu = menubar.addMenu('Help')  # Create a File menu
+        helpAction = fileMenu.addAction('Open Doc')
+        helpAction.triggered.connect(self.showDocumentation)
+
+
 
     def openFile(self):
         filename, _ = QFileDialog.getOpenFileName(self, 'Open File', '.', 'CSV Files (*.csv)')
@@ -121,6 +132,12 @@ class MainWindow(QMainWindow):
                     self.textField.text()
                 ]
                 f.write(','.join(last_line) + '\n')
+
+    def showDocumentation(self):
+        QMessageBox.information(self, "Doc", "This is the Doc:")
+
+    def showVariant(self):
+        QMessageBox.information(self, "Variant", "Something with Variants")
 
     def addWidgetsToSidePanel(self):
         # Button to sort the first column
